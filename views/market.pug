@@ -1,0 +1,33 @@
+extends layout
+block content
+  h1= title
+  p Welcome to the market 
+  div(class="container-fluid")
+        div(class="row")
+            -
+                let market = [
+                    {
+                        "itemType": "Vegetables",
+                        "Quantity": 20,
+                        "price": "10 USD"
+                    },
+                    {
+                        "itemType": "Drinks",
+                        "Quantity": 40,
+                        "price": "5 USD"
+                    },
+                    {
+                        "itemType": "Meat",
+                        "Quantity": 30,
+                        "price": "30 USD"
+                    },                   
+                ]
+            each p,index in market
+                div(class="col-sm-2" onclick=`buy(${index})`) #{p.itemType}
+                div(class="col-sm-2" onclick=`buy(${index})`) #{p.Quantity}
+                div(class="col-sm-2" onclick=`buy(${index})`) #{p.price}
+  script.                
+        function buy(intemNo)
+        {
+              alert(`you purchased Item ${intemNo+1}`)
+        }
