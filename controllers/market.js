@@ -24,3 +24,15 @@ exports.market_delete = function(req, res) {
 exports.market_update_put = function(req, res) { 
     res.send('NOT IMPLEMENTED: market update PUT' + req.params.id); 
 }; 
+
+// List of all market 
+exports.marketlist = async function(req, res) { 
+    try{ 
+        themarket = await marketfind(); 
+        res.send(themarket); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+}; 
