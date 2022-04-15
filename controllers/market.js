@@ -6,8 +6,15 @@ exports.market_list = function(req, res) {
 }; 
  
 // for a specific market. 
-exports.market_detail = function(req, res) { 
-    res.send('NOT IMPLEMENTED: market detail: ' + req.params.id); 
+exports.market_detail = async function(req, res) { 
+    console.log("detail"  + req.params.id) 
+    try { 
+        result = await market.findById( req.params.id) 
+        res.send(result) 
+    } catch (error) { 
+        res.status(500) 
+        res.send(`{"error": document for id ${req.params.id} not found`); 
+    } 
 }; 
  
 // Handle market create on POST. 
@@ -64,3 +71,4 @@ exports.market_view_all_Page = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
 };
+
