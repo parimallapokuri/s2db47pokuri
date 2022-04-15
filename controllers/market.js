@@ -43,8 +43,24 @@ exports.market_delete = function(req, res) {
 }; 
  
 // Handle market update form on PUT. 
-exports.market_update_put = function(req, res) { 
-    res.send('NOT IMPLEMENTED: market update PUT' + req.params.id); 
+exports.market_update_put = async function(req, res) { 
+    console.log(`update on id ${req.params.id} with body 
+${JSON.stringify(req.body)}`) 
+    try { 
+        let toUpdate = await market.findById( req.params.id) 
+        // Do updates of properties 
+        if(req.body.market_type)  
+               toUpdate.market_type = req.body.market_type; 
+        if(req.body.cost) toUpdate.cost = req.body.cost; 
+        if(req.body.size) toUpdate.size = req.body.size; 
+        let result = await toUpdate.save(); 
+        console.log("Sucess " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": ${err}: Update for id ${req.params.id} 
+failed`); 
+    } 
 }; 
 
 // List of all markets
