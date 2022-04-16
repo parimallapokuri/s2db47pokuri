@@ -1,0 +1,22 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let marketid = toShow._id 
+  - let market_type = toShow.itemType
+  - let marketQuantity = toShow.Quantity 
+  - let marketprice = toShow.price 
+  div 
+    div.row 
+      div(class='marketAttr mr-3') market ID is: 
+      div #{marketid} 
+    div.row 
+      div(class='marketAttr mr-3') market Type is: 
+      div #{market_type} 
+    div.row 
+      div(class='marketAttr mr-3') market price is: 
+      div #{marketprice} 
+    div.row 
+      div(class='marketAttr mr-3') market Quantity is: 
+      div #{marketQuantity} 
