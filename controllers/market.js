@@ -37,9 +37,17 @@ exports.market_create_post = async function(req, res) {
     }   
 }; 
  
-// Handle market delete form on DELETE. 
-exports.market_delete = function(req, res) { 
-    res.send('NOT IMPLEMENTED: market delete DELETE ' + req.params.id); 
+// Handle market delete on DELETE. 
+exports.market_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await market.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
 }; 
  
 // Handle market update form on PUT. 
