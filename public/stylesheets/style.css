@@ -6,3 +6,9 @@ body {
 a {
   color: #00B7FF;
 }
+
+.marketAttr { 
+  background-color:coral;
+  font-style: italic;
+  width: 120px; 
+} 

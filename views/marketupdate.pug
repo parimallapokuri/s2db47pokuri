@@ -1,0 +1,61 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let marketid = toShow._id 
+  - let itemType = toShow.itemType 
+  - let Quantity = toShow.Quantity 
+  - let price = toShow.price 
+   
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{marketid} 
+  - let actionid = "/resource/market/" + marketid 
+  form(id='marketForm', action= actionid, method="PUT") 
+    div.form-group 
+        label.marketAttr(for='itemType') market type 
+        input#itemType(type='text', name='itemType', value= itemType ) 
+    div.form-group 
+        label.marketAttr(for='price') market price 
+        input#price(type='number', name='price', value= price ) 
+    div.form-group 
+        label.marketAttr(for='Quantity') market Quantity 
+        input#Quantity(type='text', name='Quantity', value= Quantity ) 
+    input(type="submit") 
+
+  script.
+    function UpdateOnid() {
+      console.log("starting Update")
+      // Update first
+      fetch(actionid, {
+        method: 'PUT'      // Don't need a body for the Update
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Update succeded")
+        window.location.href='/market'
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Update failed " + error )
+      });
+    }
+ 
+ // script. 
+    document.forms['marketForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    }); 
