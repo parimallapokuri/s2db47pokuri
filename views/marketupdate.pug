@@ -23,8 +23,26 @@ block content
         label.marketAttr(for='Quantity') market Quantity 
         input#Quantity(type='text', name='Quantity', value= Quantity ) 
     input(type="submit") 
+
+  script.
+    function UpdateOnid() {
+      console.log("starting Update")
+      // Update first
+      fetch(actionid, {
+        method: 'PUT'      // Don't need a body for the Update
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Update succeded")
+        window.location.href='/market'
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Update failed " + error )
+      });
+    }
  
-  script. 
+ // script. 
     document.forms['marketForm'].addEventListener('submit', (event) => { 
       event.preventDefault(); 
       // TODO do something here to show user that form is being submitted 

@@ -8,6 +8,7 @@ a {
 }
 
 .marketAttr { 
-  background-color: aquamarine; 
+  background-color:coral;
+  font-style: italic;
   width: 120px; 
 } 

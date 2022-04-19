@@ -20,3 +20,21 @@ block content
     div.row 
       div(class='marketAttr mr-3') market price is: 
       div #{price} 
+
+  script.
+    function detailPageOnid() {
+      console.log("starting detailPage")
+      // detailPage first
+      fetch(actionid, {
+        method: 'GET'      // Don't need a body for the detailPage
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("detailPage succeded")
+        window.location.href='/market'
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("detailPage failed " + error )
+      });
+    }
