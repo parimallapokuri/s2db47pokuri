@@ -10,7 +10,7 @@ var router = express.Router();
 //router.get('/', market_controlers.market_view_all_Page ); 
 
 // GET request for one market. 
-//router.get('/market/:id', market_controller.market_detail); 
+//router.get('/market/:id', market_controlers.market_detail); 
 
 /* GET detail market page */ 
 router.get('/detail', market_controlers.market_view_one_Page); 
