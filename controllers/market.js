@@ -108,3 +108,32 @@ exports.market_view_one_Page = async function(req, res) {
         res.send(`{'error': '${err}'}`); 
     } 
 }; 
+
+
+// Handle building the view for creating a market. 
+// No body, no in path parameter, no query. 
+// Does not need to be async 
+exports.market_create_Page =  function(req, res) { 
+    console.log("create view") 
+    try{ 
+        res.render('marketcreate', { title: 'market Create'}); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+
+// Handle building the view for updating a market. 
+// query provides the id 
+exports.market_update_Page =  async function(req, res) { 
+    console.log("update view for item "+req.query.id) 
+    try{ 
+        let result = await market.findById(req.query.id) 
+        res.render('marketupdate', { title: 'market Update', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
