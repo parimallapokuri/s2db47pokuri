@@ -18,6 +18,8 @@ router.get('/detail', market_controlers.market_view_one_Page);
 router.get('/create', market_controlers.market_create_Page); 
 /* GET create update page */ 
 router.get('/update', market_controlers.market_update_Page); 
+/* GET delete market page */ 
+router.get('/delete', market_controlers.market_delete_Page); 
  
 
 module.exports = router;
