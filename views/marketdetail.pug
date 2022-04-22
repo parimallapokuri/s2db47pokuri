@@ -20,6 +20,15 @@ block content
     div.row 
       div(class='marketAttr mr-3') market price is: 
       div #{price} 
+    
+    button(class="btn btn-danger m-2" onclick="detailPageOnid()") Detail 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+ 
+  script. 
+    function cancel() { 
+      // Go back to the home page for the market collection 
+      window.location.href='/market' 
+    }
 
   script.
     function detailPageOnid() {
