@@ -18,7 +18,7 @@ block content
         input#itemType(type='text', name='itemType', value= itemType ) 
     div.form-group 
         label.marketAttr(for='price') market price 
-        input#price(type='text', name='price', value= price ) 
+        input#price(type='number', name='price', value= price ) 
     div.form-group 
         label.marketAttr(for='Quantity') market Quantity 
         input#Quantity(type='number', name='Quantity', value= Quantity ) 
@@ -43,9 +43,12 @@ block content
     });
 <!--
    // button(class="btn btn-danger m-2" onclick="UpdateOnid()") Update 
+        input#Quantity(type='text', name='Quantity', value= Quantity ) 
+
+    button(class="btn btn-danger m-2" onclick="UpdateOnid()") Update 
     button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
  
- // script. 
+  script. 
     function cancel() { 
       // Go back to the home page for the market collection 
       window.location.href='/market' 

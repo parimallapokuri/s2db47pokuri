@@ -7,7 +7,7 @@ var router = express.Router();
  // res.render('market', { title: 'Search Results Market' });
 //});
 
-router.get('/', market_controlers.market_view_all_Page ); 
+//router.get('/', market_controlers.market_view_all_Page ); 
 
 // GET request for one market. 
 //router.get('/market/:id', market_controlers.market_detail); 
