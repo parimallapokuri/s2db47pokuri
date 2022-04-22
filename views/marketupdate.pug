@@ -17,11 +17,12 @@ block content
         label.marketAttr(for='itemType') market type 
         input#itemType(type='text', name='itemType', value= itemType ) 
     div.form-group 
-        label.marketAttr(for='price') market price 
-        input#price(type='text', name='price', value= price ) 
-    div.form-group 
         label.marketAttr(for='Quantity') market Quantity 
-        input#Quantity(type='number', name='Quantity', value= Quantity ) 
+        input#Quantity(type='text', name='Quantity', value= Quantity )
+    div.form-group 
+        label.marketAttr(for='price') market price 
+        input#price(type='number', name='price', value= price ) 
+     
     input(type="submit") 
  
   script. 
@@ -40,50 +41,4 @@ block content
         // TODO handle error 
         alert("Update failed " + error ) 
       }); 
-    });
-<!--
-   // button(class="btn btn-danger m-2" onclick="UpdateOnid()") Update 
-    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
- 
- // script. 
-    function cancel() { 
-      // Go back to the home page for the market collection 
-      window.location.href='/market' 
-    } 
-
-  script.
-    function UpdateOnid() {
-      console.log("starting Update")
-      // Update first
-      fetch(actionid, {
-        method: 'PUT'      // Don't need a body for the Update
-      }).then((resp) => {
-        return resp.json(); // or resp.text() or whatever the server sends
-      }).then((body) => {
-        alert("Update succeded")
-        window.location.href='/market'
-        // TODO handle body
-      }).catch((error) => {
-        // TODO handle error
-        alert("Update failed " + error )
-      });
-    }
- 
- // script. 
-    document.forms['marketForm'].addEventListener('submit', (event) => { 
-      event.preventDefault(); 
-      // TODO do something here to show user that form is being submitted 
-      fetch(event.target.action, { 
-        method: 'PUT', 
-        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
-      }).then((resp) => { 
-        return resp.json(); // or resp.text() or whatever the server sends 
-      }).then((body) => { 
-        alert("Update succeded") 
-        // TODO handle body 
-      }).catch((error) => { 
-        // TODO handle error 
-        alert("Update failed " + error ) 
-      }); 
     }); 
-    -->
