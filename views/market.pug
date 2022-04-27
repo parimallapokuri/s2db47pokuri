@@ -2,14 +2,22 @@ extends layout
 
 block content
   h1= title
+  p Welcome to #{title}
   - let items = results
-   div(class = "container-fluid")
-    div(class = "row m-1")
-     each item in items  
-      - let destination = `dispatch(\"/market/update?id=${item._id}\")`
-      div(class="row-sm-2", class="m-1") itemType: #{item.itemType}(#{item.Quantity}) is #{item.price}  
-        button.btn( class="btn-primary ml-1", onclick= destination) Update
+  - let des = `dispatch(\"/market/create\")`
+  button.btn( class="btn-secondary m-1" onclick= des) Create
+  div(class="container-fluid")
+    div(class="col m-1")
+      each market, index in items
+          - let destination = `dispatch(\"/market/update?id=${market._id}\")`
+          - let destination1 = `dispatch(\"/market/detail?id=${market._id}\")`
+          - let destination2 = `dispatch(\"/market/delete?id=${market._id}\")`
+          div(class="row-sm-2" class="m-1")  Item #{market.itemType}(#{market.Quantity}) is $#{market.price}
+          button.btn( class="btn-primary ml-1", onclick= destination) Update
+          button.btn( class="btn-success m-1", onclick= destination1) Details
+          button.btn( class="btn-danger m-1", onclick= destination2) Delete
+  
   script. 
     function dispatch(path){ 
-        window.location.href=path 
+      window.location.href=path 
     }
