@@ -1,14 +1,13 @@
-extends layout
-
-block content
-  h1= title
-  p Hello I'm Parimalla, My favourite hobby is to know about ancient history
-  button(type="button", class="btn btn-primary",onclick="moreClaps()") Press  me
-  div(id = "target") Clap for me
-  a(href='/market') Market Page
-  script. 
-    var clap_count = 0;
-    function moreClaps() {
-      clap_count=clap_count+2;
-      document.getElementById("target").innerHTML=`Value now ${clap_count}`;
-    }
+extends layout 
+ 
+block content 
+  div(class="container-fluid mt-3 mystyle" ) Welcome to market Application
+  if (!user) 
+    a(href="/login") Login 
+    br 
+    a(href="/register") Register 
+  if (user) 
+    p You are currently logged in as #{user.username} 
+    a(href="/market") Take me to market 
+    br 
+    a(href="/logout") Logout 
